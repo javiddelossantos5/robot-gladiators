@@ -55,6 +55,7 @@ var endGame = function() {
   var playAgainConfirm = window.confirm('Would you like to play again?');
 
   if (playAgainConfirm) {
+    //restart the game
     startGame();
   } else {
     window.alert('Thank you for playing Battlebots! Come back soon!');
