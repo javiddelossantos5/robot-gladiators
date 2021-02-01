@@ -92,6 +92,12 @@ var fightOrSkip = function() {
 
 // fight function (now with parameter for enemy's name)
 var fight = function(enemyInfo) {
+  //keep track of who goes first
+  var isPlayerTurn = true;
+
+  if (Math.random() > 0.5) {
+  isPlayerTurn = false;
+  }
     //repeat and execute as long as the enemy-robot os alive
   while (playerInfo.health > 0 && enemyInfo.health > 0) {
     // ask player if they'd like to fight or skip using fightOrSkip function
@@ -112,14 +118,6 @@ var fight = function(enemyInfo) {
 
       // award player money for winning
       playerInfo.money = playerInfo.money + 20;
-
-      // ask if player wants to use the store before next round
-      var storeConfirm = window.confirm('The fight is over, visit the store before the next round?');
-
-      // if yes, take them to the store() function
-      if (storeConfirm) {
-        shop();
-      }
 
       // leave while() loop since enemy is dead
       break;
@@ -143,6 +141,8 @@ var fight = function(enemyInfo) {
       window.alert(playerInfo.name + ' still has ' + playerInfo.health + ' health left.');
     }
   }
+  //switch turn order for next round
+  isPlayerTurn = !isPlayerTurn;
 };
 
 // go to shop between battles function
